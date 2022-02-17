@@ -1,0 +1,11 @@
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\ImageDigger.exe.config
+C:\Projects\ImageDigger\ImageDigger\obj\Debug\ImageDigger.csprojResolveAssemblyReference.cache
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\ImageDigger.exe
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\ImageDigger.pdb
+C:\Projects\ImageDigger\ImageDigger\obj\Debug\ImageDigger.exe
+C:\Projects\ImageDigger\ImageDigger\obj\Debug\ImageDigger.pdb
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Web.Http.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Net.Http.Formatting.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Web.Http.xml
+C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Net.Http.Formatting.xml
