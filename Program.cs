@@ -24,7 +24,12 @@ namespace ImageDigger
             Details worker;  
             
             worker=new Details();
-            worker.startJob();
+            Console.Clear();
+            Console.WriteLine("EpicImageDigger - A “BLUE MARBLE” image downloader");
+            Console.WriteLine("By: Cristian Lepadatu");
+            Console.WriteLine("Images by: NASA DSCOVR: EPIC Earth Polychromatic Imaging Camera ");
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            worker.MainJob();
 
             Console.ReadLine();
             Console.ReadKey();           
