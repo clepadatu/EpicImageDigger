@@ -9,3 +9,6 @@ C:\Projects\ImageDigger\ImageDigger\bin\Release\System.Net.Http.Formatting.xml
 C:\Projects\ImageDigger\ImageDigger\obj\Release\ImageDigger.exe
 C:\Projects\ImageDigger\ImageDigger\obj\Release\ImageDigger.pdb
 C:\Projects\ImageDigger\ImageDigger\obj\Release\ImageDigger.csprojResolveAssemblyReference.cache
+C:\Projects\bin\ImageDigger\Release\ImageDigger.exe.config
+C:\Projects\bin\ImageDigger\Release\ImageDigger.exe
+C:\Projects\bin\ImageDigger\Release\ImageDigger.pdb

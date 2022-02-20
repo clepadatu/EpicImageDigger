@@ -9,3 +9,6 @@ C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Web.Http.dll
 C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Net.Http.Formatting.dll
 C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Web.Http.xml
 C:\Projects\ImageDigger\ImageDigger\bin\Debug\System.Net.Http.Formatting.xml
+C:\Projects\bin\ImageDigger\Debug\ImageDigger.exe.config
+C:\Projects\bin\ImageDigger\Debug\ImageDigger.exe
+C:\Projects\bin\ImageDigger\Debug\ImageDigger.pdb

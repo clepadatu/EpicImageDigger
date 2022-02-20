@@ -53,6 +53,7 @@ namespace ImageDigger
                 Console.WriteLine("The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout. " + e.HelpLink);
                 Console.WriteLine("Retrying in 5 seconds...");
                 Thread.Sleep(5000);
+                return "";
             }
 
             Console.Write("Complete.");
@@ -96,6 +97,7 @@ namespace ImageDigger
                 Console.WriteLine("The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout. " + e.HelpLink);
                 Console.WriteLine("Retrying in 5 seconds...");
                 Thread.Sleep(5000);
+                return "";
             }
 
             Console.Write("Complete.");
