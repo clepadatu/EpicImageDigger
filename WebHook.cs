@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 namespace ImageDigger
 {
     class WebHook
@@ -50,6 +51,8 @@ namespace ImageDigger
             catch (HttpRequestException e)
             {
                 Console.WriteLine("The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout. " + e.HelpLink);
+                Console.WriteLine("Retrying in 5 seconds...");
+                Thread.Sleep(5000);
             }
 
             Console.Write("Complete.");
@@ -91,6 +94,8 @@ namespace ImageDigger
             catch (HttpRequestException e)
             {
                 Console.WriteLine("The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout. " + e.HelpLink);
+                Console.WriteLine("Retrying in 5 seconds...");
+                Thread.Sleep(5000);
             }
 
             Console.Write("Complete.");
@@ -100,7 +105,7 @@ namespace ImageDigger
         }
 
 
-        public void Download(string imageMode, string imagename, string YMD,string api_key)
+        public int Download(string imageMode, string imagename, string YMD,string api_key)
         {
 
             //https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY
@@ -129,8 +134,19 @@ namespace ImageDigger
             if (!File.Exists(pathString + "\\" + imagename + ".png"))
             {
                 Console.Write("Downloading " + fullurl + " to " + pathString + "\\" + imagename + " ...");
-                client.DownloadFileCompleted += (sender, e) => Console.Write("Complete.");
-                client.DownloadFile(uri, pathString + "\\" + imagename + ".png");
+
+                try
+                {
+                    client.DownloadFileCompleted += (sender, e) => Console.Write("Complete.");
+                    client.DownloadFile(uri, pathString + "\\" + imagename + ".png");
+                }
+                catch (WebException e)
+                {
+                    Console.WriteLine(e.Response + ". The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout. " + e.Status);
+                    Console.WriteLine("Retrying in 5 seconds...");
+                    Thread.Sleep(5000);
+                    return 0;
+                }
                 Console.Write("Complete.");
             }
             else
@@ -140,6 +156,7 @@ namespace ImageDigger
             
             
             Console.WriteLine();
+            return 1;
         }
 
 

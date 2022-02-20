@@ -222,7 +222,11 @@ namespace ImageDigger
                     foreach (var item in zi.Images)
                     {
                         //Console.WriteLine(item.image);
-                        WebHelper.Download(imageMode,item.image, YMD,api_key);
+                        int imageDownloaded= 0;
+                        while (imageDownloaded == 0)
+                        {
+                           imageDownloaded=WebHelper.Download(imageMode, item.image, YMD, api_key);
+                        }
                     }
                 }
                
