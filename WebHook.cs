@@ -1,5 +1,5 @@
 ﻿using System;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace ImageDigger
 {
     class WebHook
     {
-        public async Task<string> getDaySet(string imageMode)
+        public async Task<string> getDaySet(string imageMode,string api_key)
         {
             Console.WriteLine();
             Console.Write("Getting list of available day data...");
@@ -58,7 +58,7 @@ namespace ImageDigger
 
         }
 
-        public async Task<string> getImageSet(string imageMode,string YMD)
+        public async Task<string> getImageSet(string imageMode,string YMD,string api_key)
         {
             //get set of image names from a certain day from https://api.nasa.gov/EPIC/api/enhanced/date/2019-05-30?api_key=DEMO_KEY
             Console.WriteLine();
@@ -100,7 +100,7 @@ namespace ImageDigger
         }
 
 
-        public void Download(string imageMode, string imagename, string YMD)
+        public void Download(string imageMode, string imagename, string YMD,string api_key)
         {
 
             //https://api.nasa.gov/EPIC/archive/natural/2019/05/30/png/epic_1b_20190530011359.png?api_key=DEMO_KEY
@@ -123,14 +123,22 @@ namespace ImageDigger
             string pathString = System.IO.Path.Combine(currentFolder, "Data\\" + year + @"\" + month + @"\" + day);
 
             Console.WriteLine();
-            Console.Write("Downloading " + fullurl + " to " + pathString + "\\" + imagename + " ...");
 
             var client = new WebClient();
             var uri = new Uri(fullurl);
-
-            client.DownloadFileCompleted += (sender, e) => Console.Write("Complete.");
+            if (!File.Exists(pathString + "\\" + imagename + ".png"))
+            {
+                Console.Write("Downloading " + fullurl + " to " + pathString + "\\" + imagename + " ...");
+                client.DownloadFileCompleted += (sender, e) => Console.Write("Complete.");
+                client.DownloadFile(uri, pathString + "\\" + imagename + ".png");
+                Console.Write("Complete.");
+            }
+            else
+            {
+                Console.Write("File " + pathString + "\\" + imagename + ".png" + " already exists, skipping...");
+            }
             
-            client.DownloadFile(uri, pathString + "\\" + imagename + ".png");
+            
             Console.WriteLine();
         }
 

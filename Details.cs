@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 namespace ImageDigger
 {
@@ -63,7 +64,7 @@ namespace ImageDigger
 #if DEBUG
 
 #else
-            Console.WriteLine("API Key:");
+            Console.WriteLine("Type in your API Key (you can get one for free here https://api.nasa.gov/ ):");
             api_key = Console.ReadLine();
 #endif
 
@@ -72,7 +73,7 @@ namespace ImageDigger
 
         private int GetNStoreDates()
         {
-            var task = WebHelper.getDaySet(imageMode);
+            var task = WebHelper.getDaySet(imageMode,api_key);
             task.Wait();
             return ProcessDates(task.Result);
         }
@@ -145,16 +146,35 @@ namespace ImageDigger
             switch (jobMode)
             {
                 case "B":
+//get Year,Month,Day, prepare YMD format, then retrieve image set
+                   
+                    
+                    foreach (var zi in data)
+                    {
+                            
 
+                        int getImageReady = 0;
+                        while (getImageReady == 0)
+                        {
+                            var task = WebHelper.getImageSet(imageMode, zi.date,api_key);
+                            task.Wait();
+                            getImageReady=ProcessImageSet(task.Result, zi.date);
+                        }
+                        Console.WriteLine("Making sure your api key stays alive...");
+                        Thread.Sleep(5000);
+                        Console.Write("Ok, good to go.");
+                        Console.WriteLine();
+                     
+                    }
                     break;
 
                 case "S":
                     //get Year,Month,Day, prepare YMD format, then retrieve image set
-                    Console.WriteLine("Type in year:");
+                    Console.WriteLine("Type in year (2016-2022):");
                     string year = Console.ReadLine();
-                    Console.WriteLine("Type in month:");
+                    Console.WriteLine("Type in month (01-12):");
                     string month = Console.ReadLine();
-                    Console.WriteLine("Type in day:");
+                    Console.WriteLine("Type in day (01-31):");
                     string day = Console.ReadLine();
                     
                     string YMD = year + "-" + month + "-" + day;
@@ -165,7 +185,7 @@ namespace ImageDigger
                             int getImageReady = 0;
                             while (getImageReady == 0)
                             {
-                                var task = WebHelper.getImageSet(imageMode, YMD);
+                                var task = WebHelper.getImageSet(imageMode, YMD,api_key);
                                 task.Wait();
                                 getImageReady=ProcessImageSet(task.Result, YMD);
                             }
@@ -173,8 +193,8 @@ namespace ImageDigger
                     }
                     break;
             }
-            
-            Console.WriteLine("Jobs complete.")
+
+            Console.WriteLine("Jobs complete.");
             
             
         }
@@ -202,7 +222,7 @@ namespace ImageDigger
                     foreach (var item in zi.Images)
                     {
                         //Console.WriteLine(item.image);
-                        WebHelper.Download(imageMode,item.image, YMD);
+                        WebHelper.Download(imageMode,item.image, YMD,api_key);
                     }
                 }
                

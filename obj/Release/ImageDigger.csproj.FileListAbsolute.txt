@@ -1,0 +1,10 @@
+C:\Projects\ImageDigger\ImageDigger\bin\Release\ImageDigger.exe.config
+C:\Projects\ImageDigger\ImageDigger\bin\Release\ImageDigger.exe
+C:\Projects\ImageDigger\ImageDigger\bin\Release\ImageDigger.pdb
+C:\Projects\ImageDigger\ImageDigger\bin\Release\Newtonsoft.Json.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Release\System.Web.Http.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Release\System.Net.Http.Formatting.dll
+C:\Projects\ImageDigger\ImageDigger\bin\Release\System.Web.Http.xml
+C:\Projects\ImageDigger\ImageDigger\bin\Release\System.Net.Http.Formatting.xml
+C:\Projects\ImageDigger\ImageDigger\obj\Release\ImageDigger.exe
+C:\Projects\ImageDigger\ImageDigger\obj\Release\ImageDigger.pdb
